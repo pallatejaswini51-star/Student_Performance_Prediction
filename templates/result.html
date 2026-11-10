@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Student Performance Result</h1>
+
+        <h2>Predicted Marks: {{ result.marks }}</h2>
+        <h2>Performance: {{ result.category }}</h2>
+
+        <a href="/">
+            <button type="button">Predict Again</button>
+        </a>
+
+        <br><br>
+        <a href="/history">View Prediction History</a>
+    </div>
+</body>
+</html>

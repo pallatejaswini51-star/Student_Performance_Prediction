@@ -1,0 +1,46 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <h2 class="text-center">Student Performance Dashboard</h2>
+
+    <div class="dashboard-cards">
+
+        <div class="dashboard-card">
+            <h3>Total Predictions</h3>
+            <p>{{ total }}</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Excellent</h3>
+            <p>{{ category_counts['Excellent'] }}</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Very Good</h3>
+            <p>{{ category_counts['Very Good'] }}</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Good</h3>
+            <p>{{ category_counts['Good'] }}</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Average</h3>
+            <p>{{ category_counts['Average'] }}</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Needs Improvement</h3>
+            <p>{{ category_counts['Needs Improvement'] }}</p>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

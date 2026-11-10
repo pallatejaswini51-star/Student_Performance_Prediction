@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Analytics</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h2 class="text-center">Student Performance Analytics</h2>
+
+        <p class="text-center">
+            Total Predictions: <strong>{{ total }}</strong>
+        </p>
+
+        <div style="width: 100%; max-width: 800px; margin: 30px auto;">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/dashboard">Back to Dashboard</a>
+            <a href="/history" style="margin-left: 20px;">View History</a>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('myChart');
+
+        new Chart(canvas, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Excellent',
+                    'Very Good',
+                    'Good',
+                    'Average',
+                    'Needs Improvement'
+                ],
+                datasets: [{
+                    label: 'Number of Predictions',
+                    data: [
+                        {{ category_counts['Excellent'] }},
+                        {{ category_counts['Very Good'] }},
+                        {{ category_counts['Good'] }},
+                        {{ category_counts['Average'] }},
+                        {{ category_counts['Needs Improvement'] }}
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Performance Prediction</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+<div class="container">
+
+    <h1>Student Performance Prediction</h1>
+
+    <p>Enter the student's details to predict academic performance.</p>
+
+    {% if error %}
+        <div class="error-message">{{ error }}</div>
+    {% endif %}
+
+    <form action="{{ url_for('predict') }}" method="POST">
+
+        <label for="attendance">Attendance (%)</label>
+        <input type="number" id="attendance" name="attendance"
+               min="0" max="100" step="0.1"
+               placeholder="Example: 85" required>
+
+        <label for="study_hours">Study Hours per Day</label>
+        <input type="number" id="study_hours" name="study_hours"
+               min="0" max="24" step="0.1"
+               placeholder="Example: 4.5" required>
+
+        <label for="internal_marks">Internal Marks (out of 100)</label>
+        <input type="number" id="internal_marks" name="internal_marks"
+               min="0" max="100" step="0.1"
+               placeholder="Example: 78" required>
+
+        <label for="assignment_marks">Assignment Marks (out of 100)</label>
+        <input type="number" id="assignment_marks" name="assignment_marks"
+               min="0" max="100" step="0.1"
+               placeholder="Example: 82" required>
+
+        <label for="previous_marks">Previous Marks (out of 100)</label>
+        <input type="number" id="previous_marks" name="previous_marks"
+               min="0" max="100" step="0.1"
+               placeholder="Example: 75" required>
+
+        <button type="submit">Predict Performance</button>
+    </form>
+
+    <p class="nav-link">
+        Administrator?
+        <a href="{{ url_for('login') }}">Login to Dashboard</a>
+    </p>
+
+</div>
+</body>
+</html>

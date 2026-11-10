@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="text-center mb-4">
+Student Performance Prediction
+</h2>
+
+<form action="/predict" method="POST">
+
+<div class="mb-3">
+<label>Attendance (%)</label>
+<input type="number" class="form-control" name="attendance" required>
+</div>
+
+<div class="mb-3">
+<label>Study Hours</label>
+<input type="number" class="form-control" name="study_hours" required>
+</div>
+
+<div class="mb-3">
+<label>Internal Marks</label>
+<input type="number" class="form-control" name="internal_marks" required>
+</div>
+
+<div class="mb-3">
+<label>Assignment Marks</label>
+<input type="number" class="form-control" name="assignment_marks" required>
+</div>
+
+<div class="mb-3">
+<label>Previous Marks</label>
+<input type="number" class="form-control" name="previous_marks" required>
+</div>
+
+<button class="btn btn-success w-100">
+Predict
+</button>
+
+</form>
+
+{% endblock %}
